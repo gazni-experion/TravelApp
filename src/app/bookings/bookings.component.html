@@ -1,0 +1,63 @@
+<app-home></app-home>
+<div class="container">
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <h2>Bookings: </h2>
+        </div>
+<table id="tableSortExample" mdbTable class="z-depth-1">
+  <thead>
+    <tr>
+      <th>
+          Travel Id
+        <mdb-icon fas icon="sort"></mdb-icon>
+      </th>
+      <th>
+          Passenger Name
+        <mdb-icon fas icon="sort"></mdb-icon>
+      </th>
+      <th>
+          Date Of Travel
+        <mdb-icon fas icon="sort"></mdb-icon>
+      </th>
+      <th>
+          Time Of Travel
+        <mdb-icon fas icon="sort"></mdb-icon>
+      </th>
+      <th>
+          Destination
+        <mdb-icon fas icon="sort"></mdb-icon>
+      </th>
+      <th>
+          Departure
+        <mdb-icon fas icon="sort"></mdb-icon>
+      </th>
+      <th>
+          Tickets(nos)
+        <mdb-icon fas icon="sort"></mdb-icon>
+      </th>
+      <th>
+          Airline Name
+        <mdb-icon fas icon="sort"></mdb-icon>
+      </th>
+      <th>
+          Total Price
+        <mdb-icon fas icon="sort"></mdb-icon>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let booking of travelService.travels; let i = index">
+      <th scope="row">{{booking.TravelId}}</th>
+      <td>{{booking.PassengerName}}</td>
+      <td>{{booking.DateOfTravel | date: 'dd-MMM-yyyy'}}</td>
+      <td>{{booking.TimeOfTravel}}</td>
+      <td>{{booking.Destination}}</td>
+      <td>{{booking.Departure}}</td>
+      <td>{{booking.Tickets}}</td>
+      <td>{{booking.Airline}}</td>
+      <td>{{booking.TotalPrice}}</td>
+    </tr>
+  </tbody>
+</table>
+    </div>
+</div>
