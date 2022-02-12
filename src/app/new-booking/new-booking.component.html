@@ -1,0 +1,248 @@
+<app-home></app-home>
+<div class="container">
+  <div class="row mt-2">
+    <div class="row mx-auto">
+      <h2>New Booking</h2>
+    </div>
+    <hr>
+        <!-- Template driven form -->
+<div class="card mx-auto" style="width: 50%">
+  <div class="card-body">
+    <form
+      #form="ngForm"
+      name="ngForm"
+      autocomplete="off"
+      class="form-group p-3"
+      (ngSubmit)="onSubmit(form)"
+    >
+
+      <!-- Employee id Hidden -->
+      <input
+        type="hidden"
+        name="TravelId"
+        [(ngModel)]="travelService.formDataBook.TravelId"
+      />
+
+      
+      <!-- Number of Tickets-->
+      <div class="form-group m-3">
+        <label for="TicketNos">Number of Tickets: </label>
+        <input
+          type="number"
+          class="form-control"
+          name="TicketNos"
+          #TicketNos="ngModel"
+          [(ngModel)]="travelService.formDataBook.TicketNos"
+          placeholder="Enter Tickets"
+          required
+          [ngClass]="{ 'is-invalid': TicketNos.touched && TicketNos.invalid }"
+        />
+
+        <!-- Validation -->
+        <p *ngIf="TicketNos.touched && TicketNos.invalid" class="validation-error">
+          <span *ngIf="TicketNos.errors.required" style="color: crimson"
+            >Ticket nos. is required!</span
+          >
+        </p>
+      </div>
+
+
+      <!-- Place of departure -->
+      <div class="form-group m-3">
+        <label for="PlaceOfDeparture">Departure: </label>
+        <input
+          type="text"
+          class="form-control"
+          name="PlaceOfDeparture"
+          #PlaceOfDeparture="ngModel"
+          [(ngModel)]="travelService.formDataBook.PlaceOfDeparture"
+          placeholder="Enter place of departure"
+          required
+          [ngClass]="{
+            'is-invalid': PlaceOfDeparture.touched && PlaceOfDeparture.invalid
+          }"
+        />
+
+        <!-- Validation -->
+        <p
+          *ngIf="PlaceOfDeparture.touched && PlaceOfDeparture.invalid"
+          class="validation-error"
+        >
+          <span *ngIf="PlaceOfDeparture.errors.required" style="color: crimson"
+            >This field is required!</span
+          >
+        </p>
+      </div>
+
+      <!-- Place of Destination -->
+      <div class="form-group m-3">
+        <label for="Destination">Destination: </label>
+        <input
+          type="text"
+          class="form-control"
+          name="Destination"
+          #Destination="ngModel"
+          [(ngModel)]="travelService.formDataBook.Destination"
+          placeholder="Enter destination"
+          required
+          [ngClass]="{
+            'is-invalid': Destination.touched && Destination.invalid
+          }"
+        />
+
+        <!-- Validation -->
+        <p
+          *ngIf="Destination.touched && Destination.invalid"
+          class="validation-error"
+        >
+          <span *ngIf="Destination.errors.required" style="color: crimson"
+            >This field is required!</span
+          >
+        </p>
+      </div>
+
+      <!-- Date of travel -->
+      <div class="form-group m-3">
+        <label for="DateOfTravel">Date of travel: </label>
+        <input
+          type="date"
+          class="form-control"
+          name="DateOfTravel"
+          #DateOfTravel="ngModel"
+          [(ngModel)]="travelService.formDataBook.DateOfTravel"
+          required
+          [ngClass]="{
+            'is-invalid': DateOfTravel.touched && DateOfTravel.invalid
+          }"
+        />
+
+        <!-- Validation -->
+        <p
+          *ngIf="DateOfTravel.touched && DateOfTravel.invalid"
+          class="validation-error"
+        >
+          <span *ngIf="DateOfTravel.errors.required" style="color: crimson"
+            >Date is required!</span
+          >
+        </p>
+      </div>
+
+      <!-- Time of travel -->
+      <div class="form-group m-3">
+        <label for="Timeoftravel">Time of travel: </label>
+        <input
+          type="time"
+          class="form-control"
+          name="Timeoftravel"
+          #Timeoftravel="ngModel"
+          [(ngModel)]="travelService.formDataBook.Timeoftravel"
+          required
+          [ngClass]="{
+            'is-invalid': Timeoftravel.touched && Timeoftravel.invalid
+          }"
+        />
+
+        <!-- Validation -->
+        <p
+          *ngIf="Timeoftravel.touched && Timeoftravel.invalid"
+          class="validation-error"
+        >
+          <span *ngIf="Timeoftravel.errors.required" style="color: crimson"
+            >Time is required!</span
+          >
+        </p>
+      </div>
+
+
+      <!-- Airplane drop down -->
+      <div class="form-group m-3">
+        <div class="row">
+        <div class="col">
+        <label for="AirlineId">Airplane: </label>
+        <select
+          [(ngModel)]="travelService.formDataBook.AirlineId"
+          name="AirlineId"
+          id="AirlineId"
+          class="form-control"
+          #AirlineId="ngModel"
+          required
+        >
+          <option value="0" disabled>Select Airline</option>
+          <option
+            *ngFor="let airline of travelService.airline"
+            value="{{ airline.AirlineId }}"
+          >
+            {{ airline.AirlineName }}
+          </option>
+        </select>
+
+        <!-- Validation -->
+        <p
+          *ngIf="AirlineId.touched && AirlineId.invalid"
+          class="validation-error"
+        >
+          <span *ngIf="AirlineId.errors.required" style="color: crimson"
+            >This field is required!</span
+          >
+        </p>
+</div>
+
+        <div class="col-2 mt-4">
+<button class="btn btn-outline-info"><i class="far fa-plus-square"></i></button>
+</div>
+      </div>
+      </div>
+      
+      <!-- Customer drop down -->
+      <div class="form-group m-3">
+        <div class="row">
+        <div class="col">
+        <label for="PersonId">Airplane: </label>
+        <select
+          [(ngModel)]="travelService.formDataBook.PersonId"
+          name="PersonId"
+          id="PersonId"
+          class="form-control"
+          #PersonId="ngModel"
+          required
+        >
+          <option value="0" disabled>Select Customer</option>
+          <option
+            *ngFor="let user of travelService.users"
+            value="{{ user.PersonId }}"
+          >
+            {{ user.Name }}
+          </option>
+        </select>
+
+        <!-- Validation -->
+        <p
+          *ngIf="PersonId.touched && PersonId.invalid"
+          class="validation-error"
+        >
+          <span *ngIf="PersonId.errors.required" style="color: crimson"
+            >This field is required!</span
+          >
+        </p>
+      </div>
+           <div class="col-2 mt-4">
+<button class="btn btn-outline-info"><i class="far fa-plus-square"></i></button>
+</div>
+      </div>
+      </div>
+      
+
+
+    
+      <!-- Submit button -->
+      <div class="form-group d-grid m-3">
+        <button type="submit"
+        class="btn btn-primary btn-lg"
+        [disabled]="!(form.valid && form.dirty)"
+        >Submit</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+    </div>

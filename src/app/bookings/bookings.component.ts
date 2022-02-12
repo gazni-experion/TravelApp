@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AppComponent } from '../app.component';
 import { TravelsService } from '../shared/travels.service';
 
 @Component({
@@ -19,7 +20,9 @@ export class BookingsComponent implements OnInit {
     'Total Price',
   ];*/
 
-  constructor(public travelService: TravelsService) {}
+  page: number =0;
+
+  constructor(public travelService: TravelsService, public app: AppComponent) {}
 
   ngOnInit(): void {
     //Calling the getTravels method from TravelsService

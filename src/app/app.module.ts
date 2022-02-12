@@ -13,6 +13,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // For MDB Angular Free
 import { NavbarModule, WavesModule, ButtonsModule } from 'angular-bootstrap-md';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { NewBookingComponent } from './new-booking/new-booking.component';
+import { ToastrModule } from 'ngx-toastr';
+import { TravelsService } from './shared/travels.service';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSelectModule } from '@angular/material/select';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatCardModule } from '@angular/material/card';
 
 
 @NgModule({
@@ -21,6 +31,7 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
     LoginComponent,
     HomeComponent,
     BookingsComponent,
+    NewBookingComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,8 +45,16 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
     WavesModule,
     ButtonsModule,
     MDBBootstrapModule.forRoot(),
+    NgxPaginationModule,
+    Ng2SearchPipeModule,
+    ToastrModule.forRoot(),
+    MatInputModule,
+    MatButtonModule,
+    MatSelectModule,
+    MatRadioModule,
+    MatCardModule,
   ],
-  providers: [],
+  providers: [TravelsService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
